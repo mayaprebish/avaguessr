@@ -17,6 +17,7 @@ const img2Element = document.getElementById("option2img");
 const resultsElement = document.getElementById("result");
 const optionsElement = document.getElementById("options");
 const doneElement = document.getElementById("results");
+const titleElement = document.getElementById("title");
 option1.addEventListener('click', () => {
     onClick(1);
 })
@@ -27,46 +28,44 @@ playAgainButtonElement.addEventListener('click', () => {
     playAgain();
 })
 
-
-
 // MAIN
 setCorrectOption();
 getNextPhotos();
-img1Element.src = `images/${currentAvaPhoto}`;
-img2Element.src = `images/${currentNotAvaPhoto}`;
+setPhotos();
+
+function setPhotos() {
+    if (correctOption == 1) {
+            img1Element.src = `images/${currentAvaPhoto}`;
+            img2Element.src = `images/${currentNotAvaPhoto}`;
+    } else {
+        img1Element.src = `images/${currentNotAvaPhoto}`;
+        img2Element.src = `images/${currentAvaPhoto}`;
+    }
+}
+
 
 function onClick(option) {
-    console.log(option, correctOption);
     if (option == correctOption) {
-        console.log("correct!");
         points += 1;
+        titleElement.innerHTML = "CORRECT!"
     } else {
         console.log("wrong!");
+        titleElement.innerHTML = "INCORRECT!"
     }
 
     toggleFade();
+    setCorrectOption();
+    getNextPhotos();
 
     turns += 1;
     if (turns < 3) {
         sleep(500).then(() => {
-        setCorrectOption();
-        getNextPhotos();
-
-        if (correctOption == 1) {
-            img1Element.src = `images/${currentAvaPhoto}`;
-            img2Element.src = `images/${currentNotAvaPhoto}`;
-        } else {
-            img1Element.src = `images/${currentNotAvaPhoto}`;
-            img2Element.src = `images/${currentAvaPhoto}`;
-        }
-
-        toggleFade();
-    });
+            setPhotos();
+            toggleFade();
+        });
     }
     else {
         gameOver();
-        console.log("done!");
-        console.log(`points: ${points}/${turns}`);
     }
 
 
@@ -86,15 +85,25 @@ function gameOver() {
 function playAgain() {
     points = 0;
     turns = 0;
-    setCorrectOption();
-    getNextPhotos();
     optionsElement.classList.toggle("invisible");
     doneElement.classList.toggle("invisible");
+    titleElement.innerHTML = "WHICH PICTURE IS AVA?";
+    if (correctOption == 1) {
+        img1Element.src = `images/${currentAvaPhoto}`;
+        img2Element.src = `images/${currentNotAvaPhoto}`;
+    } else {
+        img1Element.src = `images/${currentNotAvaPhoto}`;
+        img2Element.src = `images/${currentAvaPhoto}`;
+    }
+    sleep(200).then(() => toggleFade());
 }
 
 function getNextPhotos() {
     if (currentAvaPhoto) {
         usedPhotos.push(currentAvaPhoto);
+    }
+    if (currentNotAvaPhoto) {
+        usedPhotos.push(currentNotAvaPhoto);
     }
     const remainingAvaPhotos = ava.filter(x => !usedPhotos.includes(x));
     const remainingNotAvaPhotos = notAva.filter(x => !usedPhotos.includes(x));
@@ -108,23 +117,4 @@ function getNextPhotos() {
 
 function setCorrectOption() {
     correctOption = Math.floor(Math.random()*2) + 1;
-}
-
-function getNextAvaPhoto() {
-    const remainingPhotos = ava.filter(x => !usedPhotos.includes(x))
-    console.log(remainingPhotos);
-    const nextPhoto = remainingPhotos[Math.floor(Math.random()*remainingPhotos.length)]
-    if (currentAvaPhoto) {
-        usedPhotos.push(currentAvaPhoto);
-    }
-    currentAvaPhoto = nextPhoto;
-}
-
-function getNextNotAvaPhoto() {
-    const remainingPhotos = notAva.filter(x => !usedPhotos.includes(x))
-    const nextPhoto = remainingPhotos[Math.floor(Math.random()*remainingPhotos.length)]
-    if (currentNotAvaPhoto) {
-        usedPhotos.push(currentNotAvaPhoto)
-    }
-    currentNotAvaPhoto = nextPhoto;
 }

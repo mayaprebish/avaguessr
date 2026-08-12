@@ -3,6 +3,7 @@ body {
     color: black;
     display: grid;
     place-items: center;
+    font-family: "Libre Baskerville", serif;
 }
 
 .title {
@@ -32,6 +33,7 @@ body {
 
 .option {
     width: 20vw;
+    height: 50vh;
     background-color: black;
 
     
