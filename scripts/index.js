@@ -1,5 +1,5 @@
-const ava = ["a1.jpg", "a2.jpg", "a3.jpg"];
-const notAva = ["c3.jpg", "c4.jpg", "c5.jpg"];
+const ava = ["a1.jpg", "b1.jpg", "c1.jpg", "d1.jpg", "e1.jpg", "f1.jpg", "g1.jpg", "h1.jpg"];
+const notAva = ["nota1.jpg", "notb1.jpg", "notc1.jpg", "notd1.jpg", "note1.jpg", "notf1.jpg", "notg1.jpg", "noth1.jpg"];
 var currentAvaPhoto;
 var currentNotAvaPhoto;
 var correctOption;
