@@ -1,0 +1,59 @@
+body {
+    background-color: white;
+    color: black;
+    display: grid;
+    place-items: center;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    width: 50vw;
+}
+
+.content {
+    margin-top: 100px;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.option {
+    width: 20vw;
+    background-color: black;
+
+    
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.option.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.option:hover {
+    background-color: red;
+}
+
+.invisible {
+    display: None;
+}
