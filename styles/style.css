@@ -14,7 +14,7 @@ body {
 }
 
 .content {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .options {
@@ -32,8 +32,8 @@ body {
 }
 
 .option {
-    width: 20vw;
-    height: 50vh;
+    width: 25vw;
+    height: 60vh;
     background-color: black;
 
     
