@@ -1,5 +1,5 @@
-const ava = ["a1.jpg", "b1.jpg", "c1.jpg", "d1.jpg", "e1.jpg", "f1.jpg", "g1.jpg", "h1.jpg", "i1.jpg", "j1.jpg", "k1.jpg", "l1.jpg", "m1.jpg", "n1.jpg", "o1.jpg", "p1.jpg", "q1.jpg"];
-const notAva = ["nota1.jpg", "notb1.jpg", "notc1.jpg", "notd1.jpg", "note1.jpg", "notf1.jpg", "notg1.jpg", "noth1.jpg", "noti1.jpg", "notj1.jpg", "notk1.jpg", "notl1.jpg", "notm1.jpg", "notn1.jpg", "noto1.jpg", "notp1.jpg", "notq1.jpg"];
+const ava = ["a1.jpg", "b1.jpg", "c1.jpg", "d1.jpg", "e1.jpg", "f1.jpg", "g1.jpg", "h1.jpg", "i1.jpg", "j1.jpg", "k1.jpg", "l1.jpg", "m1.jpg", "n1.jpg", "o1.jpg", "p1.jpg", "q1.jpg", "r1.jpg"];
+const notAva = ["nota1.jpg", "notb1.jpg", "notc1.jpg", "notd1.jpg", "note1.jpg", "notf1.jpg", "notg1.jpg", "noth1.jpg", "noti1.jpg", "notj1.jpg", "notk1.jpg", "notl1.jpg", "notm1.jpg", "notn1.jpg", "noto1.jpg", "notp1.jpg", "notq1.jpg", "notr1.jpg"];
 var currentAvaPhoto;
 var currentNotAvaPhoto;
 var correctOption;
