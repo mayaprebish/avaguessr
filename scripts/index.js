@@ -32,10 +32,15 @@ nextButtonElement.addEventListener('click', () => {
     onNext();
 })
 
-// MAIN
-setCorrectOption();
-getNextPhotos();
-setPhotos();
+const preloadImages = new Promise((resolve, reject) => {
+    var img=new Image();
+    ava.concat(notAva).forEach((i) => {
+        img.src = `images/${i}`;
+    });
+
+    resolve("avas loaded");
+})
+
 
 function setPhotos() {
     if (correctOption == 1) {
@@ -159,3 +164,10 @@ function getNextPhotos() {
 function setCorrectOption() {
     correctOption = Math.floor(Math.random()*2) + 1;
 }
+
+// MAIN
+preloadImages.then(() => {
+    setCorrectOption();
+    getNextPhotos();
+    setPhotos();
+});
