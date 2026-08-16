@@ -14,7 +14,13 @@ body {
 }
 
 .content {
-    margin-top: 50px;
+    margin-top: 16px;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .options {
@@ -33,12 +39,52 @@ body {
 
 .option {
     width: 25vw;
-    height: 60vh;
+    height: 56vh;
     background-color: black;
+    border: 1px solid white;
 
     
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
+}
+
+.outlined-correct {
+    border: 2px solid green;
+}
+
+.outlined-incorrect {
+    border: 2px solid red;
+}
+
+button {
+    height: 6vh;
+    width: 30vw;
+    margin-top: 24px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+button:hover {
+    background-color: #e8e8e8;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.option.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.option:hover {
+    background-color: red;
+}
+
+.invisible {
+    display: None;
 }
 
 @media screen and (width < 900px) {
@@ -59,29 +105,15 @@ body {
 
     .option {
         width: 70vw;
-        height: 40vh;
+        height: 35vh;
     }
 
     h1 {
         font-size: .8em;
     }
-}
 
-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.option.fade-out {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.option:hover {
-    background-color: red;
-}
-
-.invisible {
-    display: None;
+    #next {
+        width: 50vw;
+        margin-top: 16px;
+    }
 }

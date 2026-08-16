@@ -12,6 +12,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const option1 = document.getElementById("option1");
 const option2 = document.getElementById("option2");
 const playAgainButtonElement = document.getElementById("playAgain");
+const nextButtonElement = document.getElementById("next");
 const img1Element = document.getElementById("option1img");
 const img2Element = document.getElementById("option2img");
 const resultsElement = document.getElementById("result");
@@ -19,13 +20,16 @@ const optionsElement = document.getElementById("options");
 const doneElement = document.getElementById("results");
 const titleElement = document.getElementById("title");
 option1.addEventListener('click', () => {
-    onClick(1);
+    onChoose(1);
 })
 option2.addEventListener('click', () => {
-    onClick(2);
+    onChoose(2);
 })
 playAgainButtonElement.addEventListener('click', () => {
     playAgain();
+})
+nextButtonElement.addEventListener('click', () => {
+    onNext();
 })
 
 // MAIN
@@ -43,23 +47,30 @@ function setPhotos() {
     }
 }
 
+function showRealPhotos() {
+    img1Element.src = img1Element.src.replace('1', '2');
+    img2Element.src = img2Element.src.replace('1', '2');
+}
 
-function onClick(option) {
-    if (option == correctOption) {
-        points += 1;
-        titleElement.innerHTML = "CORRECT!"
-    } else {
-        console.log("wrong!");
-        titleElement.innerHTML = "INCORRECT!"
+function onNext() {
+    nextButtonElement.classList.toggle("invisible");
+    option1.classList.remove("outlined-correct");
+    option1.classList.remove("outlined-incorrect");
+    option2.classList.remove("outlined-correct");
+    option2.classList.remove("outlined-incorrect");
+    turns += 1;
+    if (turns < 3) {
+        titleElement.innerHTML = "WHICH PICTURE IS AVA?"
     }
-
+    else {
+        titleElement.innerHTML = "GAME OVER!"
+    }
     toggleFade();
     setCorrectOption();
     getNextPhotos();
 
-    turns += 1;
     if (turns < 3) {
-        sleep(500).then(() => {
+        sleep(600).then(() => {
             setPhotos();
             toggleFade();
         });
@@ -67,8 +78,36 @@ function onClick(option) {
     else {
         gameOver();
     }
+}
 
 
+function onChoose(option) {
+    if (option == correctOption) {
+        points += 1;
+        titleElement.innerHTML = "CORRECT!"
+        if (option == 1) {
+            option1.classList.toggle("outlined-correct");
+            option2.classList.toggle("outlined-incorrect");
+        }
+        if (option == 2) {
+            option2.classList.toggle("outlined-correct");
+            option1.classList.toggle("outlined-incorrect");
+        }
+    } else {
+        console.log("wrong!");
+        titleElement.innerHTML = "WRONG!"
+        if (option == 1) {
+            option1.classList.toggle("outlined-incorrect");
+            option2.classList.toggle("outlined-correct");
+        }
+        if (option == 2) {
+            option2.classList.toggle("outlined-incorrect");
+            option1.classList.toggle("outlined-correct");
+        }
+    }
+
+    showRealPhotos();
+    nextButtonElement.classList.toggle("invisible");
 }
 
 function toggleFade() {
@@ -77,7 +116,7 @@ function toggleFade() {
 }
 
 function gameOver() {
-    resultsElement.innerHTML = `${points}/${turns}`;
+    resultsElement.innerHTML = `Score: ${points}/${turns} Avas`;
     optionsElement.classList.toggle("invisible");
     doneElement.classList.toggle("invisible");
 }
