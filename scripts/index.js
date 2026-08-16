@@ -87,6 +87,7 @@ function onNext() {
 
 
 function onChoose(option) {
+    showRealPhotos();
     if (option == correctOption) {
         points += 1;
         titleElement.innerHTML = "CORRECT!"
@@ -110,7 +111,6 @@ function onChoose(option) {
         }
     }
 
-    showRealPhotos();
     nextButtonElement.classList.toggle("invisible");
 }
 
