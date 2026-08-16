@@ -74,7 +74,7 @@ function onNext() {
     if (turns < 3) {
         sleep(500).then(() => {
             setPhotos();
-        }).then(() => toggleFade());
+        }).then(() => sleep(300).then(() => toggleFade()));
     }
     else {
         gameOver();
