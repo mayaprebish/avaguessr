@@ -41,7 +41,7 @@ body {
     width: 25vw;
     height: 56vh;
     background-color: black;
-    border: 1px solid white;
+    border: 3px solid white;
 
     
     opacity: 1;
@@ -49,11 +49,11 @@ body {
 }
 
 .outlined-correct {
-    border: 2px solid green;
+    border: 3px solid #7ed11f;
 }
 
 .outlined-incorrect {
-    border: 2px solid red;
+    border: 3px solid red;
 }
 
 button {
