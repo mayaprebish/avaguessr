@@ -48,7 +48,6 @@ function setPhotos() {
 }
 
 function showRealPhotos() {
-
     img1Element.src = img1Element.src.replace('1', '2');
     img2Element.src = img2Element.src.replace('1', '2');
 }
@@ -95,7 +94,6 @@ function onChoose(option) {
             option1.classList.toggle("outlined-incorrect");
         }
     } else {
-        console.log("wrong!");
         titleElement.innerHTML = "WRONG!"
         if (option == 1) {
             option1.classList.toggle("outlined-incorrect");
@@ -135,7 +133,7 @@ function playAgain() {
         img1Element.src = `images/${currentNotAvaPhoto}`;
         img2Element.src = `images/${currentAvaPhoto}`;
     }
-    sleep(200).then(() => toggleFade());
+    sleep(300).then(() => toggleFade());
 }
 
 function getNextPhotos() {
@@ -144,6 +142,9 @@ function getNextPhotos() {
     }
     if (currentNotAvaPhoto) {
         usedPhotos.push(currentNotAvaPhoto);
+    }
+    if (usedPhotos.length == ava.length * 2) {
+        usedPhotos = [];
     }
     const remainingAvaPhotos = ava.filter(x => !usedPhotos.includes(x));
     const remainingNotAvaPhotos = notAva.filter(x => !usedPhotos.includes(x));
