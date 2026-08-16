@@ -48,6 +48,7 @@ function setPhotos() {
 }
 
 function showRealPhotos() {
+
     img1Element.src = img1Element.src.replace('1', '2');
     img2Element.src = img2Element.src.replace('1', '2');
 }
@@ -58,6 +59,8 @@ function onNext() {
     option1.classList.remove("outlined-incorrect");
     option2.classList.remove("outlined-correct");
     option2.classList.remove("outlined-incorrect");
+
+    toggleFade();
     turns += 1;
     if (turns < 3) {
         titleElement.innerHTML = "WHICH PICTURE IS AVA?"
@@ -65,15 +68,13 @@ function onNext() {
     else {
         titleElement.innerHTML = "GAME OVER!"
     }
-    toggleFade();
     setCorrectOption();
     getNextPhotos();
 
     if (turns < 3) {
-        sleep(600).then(() => {
+        sleep(500).then(() => {
             setPhotos();
-            toggleFade();
-        });
+        }).then(() => toggleFade());
     }
     else {
         gameOver();

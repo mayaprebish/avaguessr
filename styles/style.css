@@ -87,6 +87,20 @@ img {
     display: None;
 }
 
+/* @keyframes blurFadeIn {
+  0% {
+    filter: blur(20px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+
+.blur-fade-element {
+  will-change: filter; 
+  animation: blurFadeIn 0.8s forwards;
+} */
+
 @media screen and (width < 900px) {
     main {
         display: flex;
